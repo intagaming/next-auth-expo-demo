@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@acme/api": "*",
+    "@acme/auth": "*",
+    "@acme/constants": "*",
     "@acme/db": "*",
     "@tanstack/react-query": "^4.7.2",
     "@trpc/client": "10.0.0-proxy-beta.13",

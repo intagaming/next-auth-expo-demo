@@ -7,6 +7,9 @@ import { z } from "zod";
  */
 export const serverSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
+  GITHUB_EXPO_PROXY_CLIENT_ID: z.string(),
+  GITHUB_EXPO_PROXY_CLIENT_SECRET: z.string(),
+  EXPO_AUTH_PROXY_URL: z.string(),
 });
 
 /**

@@ -10,10 +10,12 @@
     "clean:workspaces": "turbo clean",
     "clean": "rm -rf node_modules .turbo .vercel",
     "lint": "turbo lint && manypkg check",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@manypkg/cli": "^0.19.2",
+    "patch-package": "^6.4.7",
     "prettier": "^2.7.1",
     "turbo": "^1.5.5"
   }

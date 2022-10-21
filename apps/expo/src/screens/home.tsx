@@ -1,9 +1,18 @@
-import { SafeAreaView, View, Text, TouchableOpacity, TextInput } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Button,
+} from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import type { inferProcedureOutput } from "@trpc/server";
 import type { AppRouter } from "@acme/api";
 import { trpc } from "../utils/trpc";
 import React from "react";
+import { signIn, signOut, useSession } from "next-auth/expo";
+import { signinGithub } from "../utils/expo-auth";
 
 const PostCard: React.FC<{
   post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
@@ -58,9 +67,29 @@ export const HomeScreen = () => {
   const postQuery = trpc.post.all.useQuery();
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
+  const { data: session, status } = useSession();
+
+  const handleSignInGithub = () => {
+    signIn(signinGithub);
+  };
+
   return (
     <SafeAreaView>
       <View className="h-full w-full p-4">
+        <Text>Session status: {status}</Text>
+        {status === "unauthenticated" && (
+          <Button
+            onPress={() => handleSignInGithub()}
+            title="Sign in with Github"
+          />
+        )}
+        {status === "authenticated" && (
+          <>
+            <Text>You are {session.user?.name}</Text>
+            <Button onPress={() => signOut()} title="Sign out" />
+          </>
+        )}
+
         <Text className="text-5xl font-bold mx-auto pb-2">
           Create <Text className="text-indigo-500">T3</Text> Turbo
         </Text>

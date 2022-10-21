@@ -4,13 +4,16 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TRPCProvider } from "./utils/trpc";
 
 import { HomeScreen } from "./screens/home";
+import { SessionProvider } from "next-auth/expo";
 
 export const App = () => {
   return (
     <TRPCProvider>
       <SafeAreaProvider>
-        <HomeScreen />
-        <StatusBar />
+        <SessionProvider>
+          <HomeScreen />
+          <StatusBar />
+        </SessionProvider>
       </SafeAreaProvider>
     </TRPCProvider>
   );
