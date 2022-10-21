@@ -1,4 +1,22 @@
-# create-t3-turbo
+# next-auth-expo-demo
+
+This repo demonstrates `next-auth/expo`.
+
+Setup:
+- Read the original create-t3-turbo setup.
+- Env:
+```env
+# apps/nextjs/.env
+GITHUB_EXPO_PROXY_CLIENT_ID=get-yours-here
+GITHUB_EXPO_PROXY_CLIENT_SECRET=get-yours-here
+EXPO_AUTH_PROXY_URL=https://auth.expo.io/@xuanan2001/expo
+```
+
+Gotchas:
+- Currently running `next-auth@4.12.0` due to conflicts.
+- Please change `@xuanan2001` text occurrences in this repo to your Expo user.
+
+Below is the original README of create-t3-turbo.
 
 ![Create T3 Turbo](https://user-images.githubusercontent.com/51714798/193696098-5ea53aa5-826f-411d-b694-b27f6a1d2421.png)
 
